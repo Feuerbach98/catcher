@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "msjsdiag.debugger-for-chrome",
+        "dbaeumer.vscode-eslint",
+        "sibiraj-s.vscode-scss-formatter",
+        "stylelint.vscode-stylelint",
+        "eg2.vscode-npm-script",
+        "christian-kohler.npm-intellisense"
+    ]
+}

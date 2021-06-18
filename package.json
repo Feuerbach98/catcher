@@ -1,0 +1,41 @@
+{
+  "name": "manchkin-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --config-name dev",
+    "staging": "webpack --config-name staging",
+    "prod": "webpack --config-name prod",
+    "local": "webpack-dev-server --config-name local",
+    "build": "webpack --config-name prod"
+  },
+  "author": "Nikolay Filiuk",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/animejs": "^3.1.2",
+    "@types/fontfaceobserver": "0.0.6",
+    "@types/howler": "^2.2.1",
+    "@types/node": "^14.14.33",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "animejs": "^3.2.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "fontfaceobserver": "^2.1.0",
+    "howler": "^2.2.1",
+    "pixi-spine": "^2.1.11",
+    "pixi.js": "^5.3.8",
+    "prettier": "^2.2.1",
+    "ts-loader": "^7.0.2",
+    "tslib": "^2.1.0",
+    "typescript": "^3.9.9",
+    "webpack": "^4.46.0",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
