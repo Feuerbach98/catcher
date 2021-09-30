@@ -21,8 +21,8 @@ export class App {
         PIXI.settings.RESOLUTION = window.devicePixelRatio;
 
         return new PIXI.Application({
-            width: 1280,
-            height: 720,
+            width: 720,
+            height: 1280,
             view: this.canvas,
             sharedLoader: true,
             sharedTicker: true,
@@ -52,6 +52,17 @@ export class App {
     };
 
     onResize = () => {
-        this.app.renderer.resize(window.innerWidth, window.innerHeight)
+        const style = this.canvas.style;
+        const width = document.body.clientWidth;
+        const height = document.body.clientHeight;
+
+        style.width = `${width}px`;
+        style.height = `${height}px`;
+        style.marginTop = `0`;
+        style.marginLeft = `0`;
+
+        const renderer_height = (720 / width) * height;
+
+        this.app.renderer.resize(720, renderer_height);
     }
 }

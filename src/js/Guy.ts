@@ -15,8 +15,8 @@ export class Guy {
         this.app = app;
         this.container = new PIXI.Container();
 
-        this.height = 160;
-        this.width = 160;
+        this.height = 250;
+        this.width = 250;
 
         this.init();
         this.initEvents();
@@ -30,6 +30,7 @@ export class Guy {
 
         this.sprite = new PIXI.Sprite(this.rightTexture);
         this.sprite.anchor.set(0.25, 1);
+        this.sprite.scale.set(1.4);
 
         this.container.addChild(this.sprite);
         this.sprite.x = this.app.renderer.width / PIXI.settings.RESOLUTION / 2;
@@ -40,7 +41,7 @@ export class Guy {
     addHead = () => {
         this.head = new PIXI.Sprite(PIXI.Loader.shared.resources["shepa_right"].texture)
         this.head.x = this.app.renderer.width / PIXI.settings.RESOLUTION / 2;
-        this.head.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 350;
+        this.head.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 350 * this.sprite!.scale.x;
         this.head.anchor.set(0.5);
 
         this.head.scale.set(this.width / Math.max(this.head.width, this.head.height))
@@ -84,6 +85,6 @@ export class Guy {
         this.sprite!.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 20;
 
         this.head!.x = this.app.renderer.width / PIXI.settings.RESOLUTION / 2;
-        this.head!.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 350;
+        this.head!.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 350 * this.sprite!.scale.x;
     }
 }
