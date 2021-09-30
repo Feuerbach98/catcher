@@ -43,6 +43,11 @@ export class Loader {
                 "shepa_left",
                 `${SESSION_CONFIG.assetsAddress}guys/shepa_left.png`
             )
+        // drinks
+            .add(
+                "vakcina",
+                `${SESSION_CONFIG.assetsAddress}drinks/vakcina.png`
+            )
 
         return new Promise((resolve) => {
             result.load(() => {

@@ -17,6 +17,10 @@
         "importHelpers": true,
         "types": [
             "node"
+        ],
+        "typeRoots": [
+            "./typings",
+            "./node_modules/@types/"
         ]
     },
     "include": [

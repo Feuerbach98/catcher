@@ -36,6 +36,7 @@ export class App {
 
     onGameLoaded = () => {
         this.game = new Game(this.app);
+        this.app.stage.addChild(this.game.bottlesContainer);
         this.app.stage.addChild(this.game.container);
     };
 
