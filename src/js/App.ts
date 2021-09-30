@@ -6,7 +6,7 @@ import { Loader } from "./PreLoader";
 export class App {
     canvas: HTMLCanvasElement;
     app: PIXI.Application;
-    loader?: PIXI.Loader;
+    loader?: Loader;
     game?: Game;
 
     constructor() {
@@ -14,6 +14,7 @@ export class App {
         this.app = this.getPixiApp();
         this.setupEvents();
         this.loadLoader();
+        this.onResize();
     }
 
     getPixiApp = () => {
@@ -30,11 +31,10 @@ export class App {
     };
 
     loadLoader = () => {
-        this.loader = new PIXI.Loader() as PIXI.Loader;
+        this.loader = new Loader(this.app);
     };
 
     onGameLoaded = () => {
-        console.log("Game loaded!")
         this.game = new Game(this.app);
         this.app.stage.addChild(this.game.container);
     };
@@ -44,5 +44,14 @@ export class App {
             EVENTS.game_loaded,
             this.onGameLoaded
         );
+
+        window.addEventListener(
+            "resize",
+            this.onResize
+        )
     };
+
+    onResize = () => {
+        this.app.renderer.resize(window.innerWidth, window.innerHeight)
+    }
 }

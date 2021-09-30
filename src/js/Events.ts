@@ -4,8 +4,6 @@ export const EVENTS = {
 
 Object.keys(EVENTS).forEach(key => {
     //@ts-ignore
-    console.log(EVENTS[key]);
-    //@ts-ignore
     document.addEventListener((EVENTS[key]), () => {
         //@ts-ignore
         console.log(EVENTS[key] + " event fired!")

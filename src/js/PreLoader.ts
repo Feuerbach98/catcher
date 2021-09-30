@@ -26,10 +26,23 @@ export class Loader {
 
     loadAssets = () => {
         const result = PIXI.Loader.shared
-            // .add(
-            //     "asteroid",
-            //     `${SESSION_CONFIG.assetsAddress}asteroid.png`
-            // )
+            .add(
+                "guy_left",
+                `${SESSION_CONFIG.assetsAddress}guy_left.png`
+            )
+            .add(
+                "guy_right",
+                `${SESSION_CONFIG.assetsAddress}guy_right.png`
+            )
+        // guys
+            .add(
+                "shepa_right",
+                `${SESSION_CONFIG.assetsAddress}guys/shepa_right.png`
+            )
+            .add(
+                "shepa_left",
+                `${SESSION_CONFIG.assetsAddress}guys/shepa_left.png`
+            )
 
         return new Promise((resolve) => {
             result.load(() => {
