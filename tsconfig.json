@@ -10,19 +10,14 @@
         "noFallthroughCasesInSwitch": true,
         "incremental": true,
         "module": "esnext",
-        "lib": [
-            "esnext",
-            "DOM"
-        ],
         "removeComments": true,
         "sourceMap": true,
         "target": "ES6",
         "noErrorTruncation": true,
-        "importHelpers": false,
+        "importHelpers": true,
         "types": [
             "node"
-        ],
-        "allowJs": true
+        ]
     },
     "include": [
         "src/**/*"
