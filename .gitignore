@@ -5,7 +5,6 @@
 
 # Node artifact files
 node_modules/
-dist/
 build/
 
 # Compiled Java class files
@@ -19,13 +18,12 @@ build/
 
 # Package files
 *.jar
- 
+
 # Maven
 target/
-dist/
 
 # JetBrains IDE
-.idea/ 
+.idea/
 
 # Unit test reports
 TEST*.xml
