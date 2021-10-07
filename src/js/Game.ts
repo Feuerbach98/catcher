@@ -2,9 +2,10 @@ import * as PIXI from "pixi.js";
 import {Guy} from "./Guy";
 import {Thing} from "./Thing";
 import anime from "animejs";
-import {GUYS_CONFIG} from "./Config";
 import {EVENTS} from "./Events";
 import {LogicState} from "./LogicState";
+import {ThingTypes} from "./Models";
+import {randomInteger} from "./Utils";
 
 // import { CONFIG } from "./Config";
 
@@ -41,7 +42,7 @@ export class Game {
             this.addThing()
             this.createCycle();
         }, this.timeout)
-        this.timeout = Math.round(Math.random() * 2000);
+        this.timeout = randomInteger(200, 2000);
     }
 
     destroyAll = () => {
@@ -79,7 +80,7 @@ export class Game {
 
             anime({
                 targets: [thing.sprite!.position],
-                duration: 3000,
+                duration: 2700,
                 y: thing.sprite!.position.y + this.app.renderer.height / PIXI.settings.RESOLUTION,
                 easing: "linear",
                 update: () => {
@@ -94,7 +95,25 @@ export class Game {
                             duration: 100,
                             complete: () => {
                                 this.thingsContainer.removeChild(thing.container)
-                                document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                if (thing.type === ThingTypes.main) {
+                                    document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                }
+                                if (thing.type === ThingTypes.lose) {
+                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                                }
+                                if (thing.type === ThingTypes.bonus) {
+                                    if (LogicState.hurtsCount < 5) {
+                                        document.dispatchEvent(new Event(EVENTS.increaseHealth));
+                                    } else {
+                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                    }
+                                }
                             },
                             alpha: 0
                         })
@@ -104,8 +123,10 @@ export class Game {
                     if (!thing.destroyed) {
                         //lost
                         thing.destroyed = true;
+                        if (thing.type === ThingTypes.main) {
+                            document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                        }
                         this.thingsContainer.removeChild(thing.container)
-                        document.dispatchEvent(new Event(EVENTS.decreaseHealth));
                     }
                 }
             })

@@ -48,6 +48,14 @@ export class Loader {
                 "vakcina",
                 `${SESSION_CONFIG.assetsAddress}drinks/vakcina.png`
             )
+            .add(
+                "applehoney",
+                `${SESSION_CONFIG.assetsAddress}drinks/applehoney.png`
+            )
+            .add(
+                "medoff",
+                `${SESSION_CONFIG.assetsAddress}drinks/medoff.png`
+            )
 
         return new Promise((resolve) => {
             result.load(() => {

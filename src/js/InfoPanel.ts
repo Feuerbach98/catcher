@@ -39,6 +39,11 @@ export class InfoPanel {
             EVENTS.increaseScore,
             this.increaseScore
         )
+
+        document.addEventListener(
+            EVENTS.increaseHealth,
+            this.increaseHealth
+        )
     }
 
     start = () => {
@@ -107,6 +112,23 @@ export class InfoPanel {
     increaseScore = () => {
         LogicState.score++;
         this.score!.text = LogicState.score.toString();
+    }
+
+    increaseHealth = () => {
+        LogicState.hurtsCount++;
+
+        const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
+
+        this.fgContainer.removeChildren(1, this.fgContainer.children.length);
+
+        for (let i = 0; i < LogicState.hurtsCount; i++) {
+            const sprite = new PIXI.Sprite(getTexture(guyConfig.head.right))
+            sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
+            sprite.anchor.set(0, 0.5);
+            sprite.position.set(120 + i * 55, 1280 - 25);
+            this.fgContainer.addChild(sprite);
+            this.sprites.push(sprite);
+        }
     }
 
     onResize = () => {

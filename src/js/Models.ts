@@ -8,6 +8,12 @@ export enum DrinkTextureKeys {
     applehoney = "applehoney"
 }
 
+export enum ThingTypes {
+    main = "main",
+    bonus = "bonus",
+    lose = "lose"
+}
+
 export enum GuysTextureKeys {
     shepa_right = "shepa_right",
     shepa_left = "shepa_left",

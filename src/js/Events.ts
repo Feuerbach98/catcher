@@ -2,6 +2,7 @@ export const EVENTS = {
     game_loaded: "game_loaded",
     decreaseHealth: "decreaseHealth",
     increaseScore: "increaseScore",
+    increaseHealth: "increaseHealth",
     gameOver: "gameOver",
 }
 
