@@ -17,6 +17,7 @@ export class Game {
     things: Thing[];
     timeout?: number;
     timeoutFn?: NodeJS.Timeout;
+    speed = 2800;
 
     constructor(app: PIXI.Application) {
         this.app = app;
@@ -38,11 +39,12 @@ export class Game {
         if (LogicState.gameOver) {
             return;
         }
+        this.speed -= 1;
         this.timeoutFn = setTimeout(() => {
             this.addThing()
             this.createCycle();
         }, this.timeout)
-        this.timeout = randomInteger(200, 2000);
+        this.timeout = randomInteger(100, 1500);
     }
 
     destroyAll = () => {
@@ -80,7 +82,7 @@ export class Game {
 
             anime({
                 targets: [thing.sprite!.position],
-                duration: 2700,
+                duration: randomInteger(this.speed, this.speed + 500),
                 y: thing.sprite!.position.y + this.app.renderer.height / PIXI.settings.RESOLUTION,
                 easing: "linear",
                 update: () => {
