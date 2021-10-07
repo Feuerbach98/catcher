@@ -1,5 +1,8 @@
 export const EVENTS = {
     game_loaded: "game_loaded",
+    decreaseHealth: "decreaseHealth",
+    increaseScore: "increaseScore",
+    gameOver: "gameOver",
 }
 
 Object.keys(EVENTS).forEach(key => {

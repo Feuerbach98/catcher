@@ -1,7 +1,7 @@
 import { App } from "./App";
 
 function init() {
-    document.title = "Asteroids";
+    document.title = "Alcohol catcher";
 
     new App();
 }

@@ -2,12 +2,14 @@ import * as PIXI from "pixi.js";
 import { EVENTS } from "./Events";
 import { Game } from "./Game";
 import { Loader } from "./PreLoader";
+import { InfoPanel } from "./InfoPanel";
 
 export class App {
     canvas: HTMLCanvasElement;
     app: PIXI.Application;
     loader?: Loader;
     game?: Game;
+    infoPanel?: InfoPanel;
 
     constructor() {
         this.canvas = document.getElementById("scene") as HTMLCanvasElement;
@@ -36,7 +38,10 @@ export class App {
 
     onGameLoaded = () => {
         this.game = new Game(this.app);
-        this.app.stage.addChild(this.game.bottlesContainer);
+        this.infoPanel = new InfoPanel(this.app);
+        this.app.stage.addChild(this.game.thingsContainer);
+        this.app.stage.addChild(this.infoPanel.bgContainer);
+        this.app.stage.addChild(this.infoPanel.fgContainer);
         this.app.stage.addChild(this.game.container);
     };
 
