@@ -25,22 +25,9 @@ export class InfoPanel {
         this.sprites = [];
 
         this.textStyle = new PIXI.TextStyle({
-            dropShadow: true,
-            dropShadowAngle: 108.5,
-            dropShadowBlur: 4,
-            dropShadowColor: "#011c7e",
-            dropShadowDistance: 3,
             fill: "white",
             fontFamily: "Maler",
             fontSize: 45,
-            letterSpacing: 1,
-            lineHeight: 2,
-            lineJoin: "round",
-            miterLimit: 0,
-            stroke: "#001638",
-            strokeThickness: 2,
-            whiteSpace: "normal",
-            leading: 2
         })
 
         this.start();
