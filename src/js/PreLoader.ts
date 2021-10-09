@@ -43,6 +43,14 @@ export class Loader {
                 "shepa_left",
                 `${SESSION_CONFIG.assetsAddress}guys/shepa_left.png`
             )
+            .add(
+                "shved_right",
+                `${SESSION_CONFIG.assetsAddress}guys/shved_right.png`
+            )
+            .add(
+                "shved_left",
+                `${SESSION_CONFIG.assetsAddress}guys/shved_left.png`
+            )
         // drinks
             .add(
                 "vakcina",

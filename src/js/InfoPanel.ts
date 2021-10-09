@@ -87,6 +87,7 @@ export class InfoPanel {
         this.bgContainer.addChild(this.score);
 
 
+        //@ts-ignore
         const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         for (let i = 0; i < LogicState.hurtsCount; i++) {
@@ -131,6 +132,7 @@ export class InfoPanel {
     increaseHealth = () => {
         LogicState.hurtsCount++;
 
+        //@ts-ignore
         const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         this.fgContainer.removeChildren(1, this.fgContainer.children.length);

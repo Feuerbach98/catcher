@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import anime from "animejs";
 import {getTexture, randomInteger} from "./Utils";
-import {GuyConfig, ThingTypes} from "./Models";
+import {GuyConfig, GuysTypes, ThingTypes} from "./Models";
 import {CONFIG, GUYS_CONFIG} from "./Config";
 import {LogicState} from "./LogicState";
 
@@ -22,6 +22,7 @@ export class Thing {
         this.container = new PIXI.Container();
         this.moving = false;
         this.destroyed = false;
+        //@ts-ignore
         this.guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         this.height = 150;

@@ -51,5 +51,18 @@ export const GUYS_CONFIG = {
             bonus: DrinkTextureKeys.applehoney,
             lose: DrinkTextureKeys.medoff
         }
+    },
+    [GuysTypes.shved]: {
+        name: "Швєд",
+        key: GuysTypes.shved,
+        head: {
+            right: GuysTextureKeys.shved_right,
+            left: GuysTextureKeys.shved_left,
+        },
+        drinks: {
+            main: DrinkTextureKeys.vakcina,
+            bonus: DrinkTextureKeys.applehoney,
+            lose: DrinkTextureKeys.medoff
+        }
     }
 }

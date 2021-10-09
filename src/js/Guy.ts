@@ -19,6 +19,7 @@ export class Guy {
     constructor(app: PIXI.Application) {
         this.app = app;
         this.container = new PIXI.Container();
+        //@ts-ignore
         this.guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         this.height = 250;
