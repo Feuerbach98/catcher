@@ -3,6 +3,7 @@ import { EVENTS } from "./Events";
 import { Game } from "./Game";
 import { Loader } from "./PreLoader";
 import { InfoPanel } from "./InfoPanel";
+import {initLogicState, LogicState, resetLogicState} from "./LogicState";
 
 export class App {
     canvas: HTMLCanvasElement;
@@ -37,6 +38,8 @@ export class App {
     };
 
     onGameLoaded = () => {
+        resetLogicState();
+
         this.game = new Game(this.app);
         this.infoPanel = new InfoPanel(this.app);
         this.app.stage.addChild(this.game.thingsContainer);
@@ -47,8 +50,13 @@ export class App {
 
     setupEvents = () => {
         document.addEventListener(
-            EVENTS.game_loaded,
+            EVENTS.startGame,
             this.onGameLoaded
+        );
+
+        document.addEventListener(
+            EVENTS.gameOver,
+            this.onGameOver
         );
 
         window.addEventListener(
@@ -56,6 +64,10 @@ export class App {
             this.onResize
         )
     };
+
+    onGameOver = () => {
+        this.app.stage.removeChildren(0, this.app.stage.children.length);
+    }
 
     onResize = () => {
         const style = this.canvas.style;

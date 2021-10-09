@@ -16,12 +16,32 @@ export class InfoPanel {
         height: 40
     }
     score?: PIXI.Text;
+    textStyle: PIXI.TextStyle;
 
     constructor(app: PIXI.Application) {
         this.app = app;
         this.bgContainer = new PIXI.Container();
         this.fgContainer = new PIXI.Container();
         this.sprites = [];
+
+        this.textStyle = new PIXI.TextStyle({
+            dropShadow: true,
+            dropShadowAngle: 108.5,
+            dropShadowBlur: 4,
+            dropShadowColor: "#011c7e",
+            dropShadowDistance: 3,
+            fill: "white",
+            fontFamily: "Maler",
+            fontSize: 45,
+            letterSpacing: 1,
+            lineHeight: 2,
+            lineJoin: "round",
+            miterLimit: 0,
+            stroke: "#001638",
+            strokeThickness: 2,
+            whiteSpace: "normal",
+            leading: 2
+        })
 
         this.start();
 
@@ -48,30 +68,33 @@ export class InfoPanel {
 
     start = () => {
         this.graphics = new PIXI.Graphics()
-        this.graphics.beginFill(0xACBBFE);
+        this.graphics.beginFill(0x303030);
         this.graphics.drawRect(0, 0, 720, 50);
         this.graphics.endFill()
 
         this.bgContainer.addChild(this.graphics);
 
         this.graphics = new PIXI.Graphics()
-        this.graphics.beginFill(0xACBBFE);
+        this.graphics.beginFill(0x303030);
         this.graphics.drawRect(0, this.app.renderer.height /  PIXI.settings.RESOLUTION - 50, 720, 50);
         this.graphics.endFill()
 
         this.bgContainer.addChild(this.graphics);
 
-        const text = new PIXI.Text("Health:")
+        const text = new PIXI.Text("Health:", {
+            ...this.textStyle,
+            fontSize: 25,
+        })
         text.anchor.set(0, 0.5);
-        text.position.set(15, 1280 - 25);
+        text.position.set(40, 1280 - 25);
         this.fgContainer.addChild(text);
 
-        const text2 = new PIXI.Text("Score:")
+        const text2 = new PIXI.Text("Score:", this.textStyle)
         text2.anchor.set(0, 0.5);
         text2.position.set(15, 25);
         this.bgContainer.addChild(text2);
 
-        this.score = new PIXI.Text("0")
+        this.score = new PIXI.Text("0", this.textStyle)
         this.score.anchor.set(0, 0.5);
         this.score.position.set(text2.position.x + text2.width + 10, 25);
         this.bgContainer.addChild(this.score);
@@ -83,7 +106,7 @@ export class InfoPanel {
             const sprite = new PIXI.Sprite(getTexture(guyConfig.head.right))
             sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
             sprite.anchor.set(0, 0.5);
-            sprite.position.set(120 + i * 55, 1280 - 25);
+            sprite.position.set(160 + i * 50, 1280 - 25);
             this.fgContainer.addChild(sprite);
             this.sprites.push(sprite);
         }
@@ -104,7 +127,11 @@ export class InfoPanel {
         console.log("Health: ",LogicState.hurtsCount);
 
         if (!LogicState.hurtsCount) {
-            document.dispatchEvent(new Event(EVENTS.gameOver));
+            setTimeout(() => {
+                document.dispatchEvent(new Event(EVENTS.gameOver));
+            }, 2000)
+
+            document.dispatchEvent(new Event(EVENTS.stopThings));
             LogicState.gameOver = true;
         }
     }
@@ -125,7 +152,7 @@ export class InfoPanel {
             const sprite = new PIXI.Sprite(getTexture(guyConfig.head.right))
             sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
             sprite.anchor.set(0, 0.5);
-            sprite.position.set(120 + i * 55, 1280 - 25);
+            sprite.position.set(160 + i * 55, 1280 - 25);
             this.fgContainer.addChild(sprite);
             this.sprites.push(sprite);
         }
@@ -137,7 +164,7 @@ export class InfoPanel {
         }
 
         this.graphics = new PIXI.Graphics()
-        this.graphics.beginFill(0xACBBFE);
+        this.graphics.beginFill(0x303030);
         this.graphics.drawRect(0, this.app.renderer.height /  PIXI.settings.RESOLUTION - 50, 720, 50);
         this.graphics.endFill()
 

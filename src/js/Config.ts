@@ -40,6 +40,8 @@ export const CONFIG = {
 
 export const GUYS_CONFIG = {
     [GuysTypes.shepa]: {
+        name: "Шепа",
+        key: GuysTypes.shepa,
         head: {
             right: GuysTextureKeys.shepa_right,
             left: GuysTextureKeys.shepa_left,

@@ -4,6 +4,9 @@ export const EVENTS = {
     increaseScore: "increaseScore",
     increaseHealth: "increaseHealth",
     gameOver: "gameOver",
+    playClicked: "playClicked",
+    startGame: "startGame",
+    stopThings: "stopThings",
 }
 
 Object.keys(EVENTS).forEach(key => {

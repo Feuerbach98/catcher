@@ -30,7 +30,7 @@ export class Game {
         this.guy = new Guy(this.app);
         this.container.addChild(this.guy.container);
 
-        document.addEventListener(EVENTS.gameOver, this.destroyAll)
+        document.addEventListener(EVENTS.stopThings, this.destroyAll)
 
         this.createCycle();
     }
