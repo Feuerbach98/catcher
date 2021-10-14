@@ -22,8 +22,6 @@ export function initSESSION_CONFIG() {
         }
         saveToStorage();
     }
-
-    console.log("storage:", SESSION_CONFIG);
 }
 
 export function saveToStorage() {
