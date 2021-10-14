@@ -4,6 +4,7 @@ import { Game } from "./Game";
 import { Loader } from "./PreLoader";
 import { InfoPanel } from "./InfoPanel";
 import {initLogicState, LogicState, resetLogicState} from "./LogicState";
+import {initSESSION_CONFIG} from "./SessionConfig";
 
 export class App {
     canvas: HTMLCanvasElement;
@@ -14,6 +15,9 @@ export class App {
 
     constructor() {
         this.canvas = document.getElementById("scene") as HTMLCanvasElement;
+
+        initSESSION_CONFIG();
+
         this.app = this.getPixiApp();
         this.setupEvents();
         this.loadLoader();

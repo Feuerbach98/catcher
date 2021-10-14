@@ -91,7 +91,7 @@
         .card {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
             width: 40%;
@@ -139,6 +139,10 @@
         .cardText {
             margin: 15px 0;
             text-align: center;
+        }
+        .gray {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
         }
     </style>
 </head>

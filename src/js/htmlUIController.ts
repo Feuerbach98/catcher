@@ -1,6 +1,7 @@
 import {EVENTS} from "./Events";
 import {GUYS_CONFIG} from "./Config";
 import {LogicState} from "./LogicState";
+import {SESSION_CONFIG} from "./SessionConfig";
 
 export class htmlUIController {
     menu = document.getElementById("menu");
@@ -29,16 +30,35 @@ export class htmlUIController {
         }
     }
 
+    checkOpenedGuys = () => {
+        let total = 0;
+
+        for (let i = 0; i < Object.keys(GUYS_CONFIG).length; i++) {
+            //@ts-ignore
+            const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];
+            total += SESSION_CONFIG.results[guy.key];
+        }
+
+        return total;
+    }
+
     addGuys = () => {
+        const total = this.checkOpenedGuys();
+
         for (let i = 0; i < Object.keys(GUYS_CONFIG).length; i++) {
 
             //@ts-ignore
             const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];
 
+            const active = total < (i) * (1000 + 200 * (i - 1));
+            const needToOpen = i * (1000 + 200 * (i - 1)) - total;
+            console.log(needToOpen);
+
             const tempalate = `
-                <img src=${this.assetsAddress + guy.head.left + ".png"} alt="tipok" style="width:100%">
+                <img class=${active ? "gray" : "s"} src=${this.assetsAddress + guy.head.left + ".png"} alt="tipok" style="width:100%">
                 <div class="container">
                     <p class="cardText">${guy.name}</p>
+                    <p class="cardText">${needToOpen > 0 ? `до відкриття ${needToOpen} очків` : ""}</p>
                 </div>
             `;
 
@@ -46,14 +66,16 @@ export class htmlUIController {
             card.classList.add("card");
             card.innerHTML = tempalate;
 
-            card.onclick = () => {
-                LogicState.currentGuy = guy.key;
-                document.dispatchEvent(new Event(EVENTS.startGame));
-                this.chooseMenu?.classList.toggle("hidden");
-                this.canvas?.classList.toggle("hidden");
-            }
-
             this.cardList?.appendChild(card);
+
+            if (!active) {
+                card.onclick = () => {
+                    LogicState.currentGuy = guy.key;
+                    document.dispatchEvent(new Event(EVENTS.startGame));
+                    this.chooseMenu?.classList.toggle("hidden");
+                    this.canvas?.classList.toggle("hidden");
+                }
+            }
         }
     }
 }

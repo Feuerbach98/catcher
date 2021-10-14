@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import { EVENTS } from "./Events";
 import { SESSION_CONFIG } from "./SessionConfig";
+import {CONFIG, GUYS_CONFIG} from "./Config";
 
 
 export class Loader {
@@ -21,49 +22,44 @@ export class Loader {
         const indexHtmlPath = `${window.location.origin}${window.location.pathname}`;
         const rootFolderPath = indexHtmlPath.replace("index.html", "");
 
-        SESSION_CONFIG.assetsAddress = `${rootFolderPath}assets/`;
+        CONFIG.assetsAddress = `${rootFolderPath}assets/`;
     }
 
     loadAssets = () => {
         const result = PIXI.Loader.shared
             .add(
                 "guy_left",
-                `${SESSION_CONFIG.assetsAddress}guy_left.png`
+                `${CONFIG.assetsAddress}guy_left.png`
             )
             .add(
                 "guy_right",
-                `${SESSION_CONFIG.assetsAddress}guy_right.png`
-            )
-        // guys
-            .add(
-                "shepa_right",
-                `${SESSION_CONFIG.assetsAddress}guys/shepa_right.png`
-            )
-            .add(
-                "shepa_left",
-                `${SESSION_CONFIG.assetsAddress}guys/shepa_left.png`
-            )
-            .add(
-                "shved_right",
-                `${SESSION_CONFIG.assetsAddress}guys/shved_right.png`
-            )
-            .add(
-                "shved_left",
-                `${SESSION_CONFIG.assetsAddress}guys/shved_left.png`
+                `${CONFIG.assetsAddress}guy_right.png`
             )
         // drinks
             .add(
                 "vakcina",
-                `${SESSION_CONFIG.assetsAddress}drinks/vakcina.png`
+                `${CONFIG.assetsAddress}drinks/vakcina.png`
             )
             .add(
                 "applehoney",
-                `${SESSION_CONFIG.assetsAddress}drinks/applehoney.png`
+                `${CONFIG.assetsAddress}drinks/applehoney.png`
             )
             .add(
                 "medoff",
-                `${SESSION_CONFIG.assetsAddress}drinks/medoff.png`
+                `${CONFIG.assetsAddress}drinks/medoff.png`
             )
+        for (let i = 0; i < Object.keys(GUYS_CONFIG).length; i++) {
+            //@ts-ignore
+            const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];
+            result.add(
+                `${guy.key}_right`,
+                `${CONFIG.assetsAddress}guys/${guy.key}_right.png`
+                )
+                .add(
+                    `${guy.key}_left`,
+                    `${CONFIG.assetsAddress}guys/${guy.key}_left.png`
+                )
+        }
 
         return new Promise((resolve) => {
             result.load(() => {

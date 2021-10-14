@@ -3,6 +3,13 @@ export enum GuysTypes {
     shved = "shved",
 }
 
+export enum GuysTextureKeys {
+    shepa_right = "shepa_right",
+    shepa_left = "shepa_left",
+    shved_right = "shved_right",
+    shved_left = "shved_left",
+}
+
 export enum DrinkTextureKeys {
     vakcina = "vakcina",
     medoff = "medoff",
@@ -13,13 +20,6 @@ export enum ThingTypes {
     main = "main",
     bonus = "bonus",
     lose = "lose"
-}
-
-export enum GuysTextureKeys {
-    shepa_right = "shepa_right",
-    shepa_left = "shepa_left",
-    shved_right = "shved_right",
-    shved_left = "shved_left",
 }
 
 export enum MainGuyTextureKeys {

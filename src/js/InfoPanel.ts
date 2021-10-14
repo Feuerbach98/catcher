@@ -4,6 +4,7 @@ import {getTexture} from "./Utils";
 import {GUYS_CONFIG} from "./Config";
 import {GuyConfig} from "./Models";
 import {EVENTS} from "./Events";
+import {saveToStorage, SESSION_CONFIG} from "./SessionConfig";
 
 export class InfoPanel {
     app: PIXI.Application
@@ -86,8 +87,6 @@ export class InfoPanel {
         this.score.position.set(text2.position.x + text2.width + 10, 25);
         this.bgContainer.addChild(this.score);
 
-
-        //@ts-ignore
         const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         for (let i = 0; i < LogicState.hurtsCount; i++) {
@@ -127,6 +126,8 @@ export class InfoPanel {
     increaseScore = () => {
         LogicState.score++;
         this.score!.text = LogicState.score.toString();
+        SESSION_CONFIG.results[LogicState.currentGuy] += 1;
+        saveToStorage();
     }
 
     increaseHealth = () => {

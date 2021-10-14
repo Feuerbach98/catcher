@@ -1,6 +1,7 @@
 import {DrinkTextureKeys, GuysTextureKeys, GuysTypes} from "./Models";
 
 export const CONFIG = {
+    assetsAddress: "",
     shipSpeed: 3,
     inertia: 0.98,
     asteroidsCount: 5,
