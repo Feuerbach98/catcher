@@ -55,8 +55,8 @@ export class htmlUIController {
             //@ts-ignore
             const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];
 
-            const active = total < (i) * (500 + 100 * (i - 1));
-            const needToOpen = i * (500 + 100 * (i - 1)) - total;
+            const active = total < (i) * (500 + 5 * (i - 1));
+            const needToOpen = i * (500 + 5 * (i - 1)) - total;
 
             const tempalate = `
                 <img class=${active ? "gray" : "s"} src=${this.assetsAddress + guy.key + "_left.png"} alt="tipok" style="width:100%">
