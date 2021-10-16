@@ -69,7 +69,7 @@ export class InfoPanel {
 
         this.bgContainer.addChild(this.graphics);
 
-        const text = new PIXI.Text("Health:", {
+        const text = new PIXI.Text("Життя:", {
             ...this.textStyle,
             fontSize: 25,
         })
@@ -77,7 +77,7 @@ export class InfoPanel {
         text.position.set(40, 1280 - 25);
         this.fgContainer.addChild(text);
 
-        const text2 = new PIXI.Text("Score:", this.textStyle)
+        const text2 = new PIXI.Text("Очки:", this.textStyle)
         text2.anchor.set(0, 0.5);
         text2.position.set(15, 25);
         this.bgContainer.addChild(text2);
@@ -90,7 +90,7 @@ export class InfoPanel {
         const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         for (let i = 0; i < LogicState.hurtsCount; i++) {
-            const sprite = new PIXI.Sprite(getTexture(guyConfig.head.right))
+            const sprite = new PIXI.Sprite(getTexture(guyConfig.key + "_right"))
             sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
             sprite.anchor.set(0, 0.5);
             sprite.position.set(160 + i * 50, 1280 - 25);
@@ -126,6 +126,13 @@ export class InfoPanel {
     increaseScore = () => {
         LogicState.score++;
         this.score!.text = LogicState.score.toString();
+
+        if (SESSION_CONFIG.results[LogicState.currentGuy] === undefined ||
+            SESSION_CONFIG.results[LogicState.currentGuy] === null
+        ) {
+            SESSION_CONFIG.results[LogicState.currentGuy] = 0;
+        }
+
         SESSION_CONFIG.results[LogicState.currentGuy] += 1;
         saveToStorage();
     }
@@ -139,7 +146,7 @@ export class InfoPanel {
         this.fgContainer.removeChildren(1, this.fgContainer.children.length);
 
         for (let i = 0; i < LogicState.hurtsCount; i++) {
-            const sprite = new PIXI.Sprite(getTexture(guyConfig.head.right))
+            const sprite = new PIXI.Sprite(getTexture(guyConfig.key + "_right"))
             sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
             sprite.anchor.set(0, 0.5);
             sprite.position.set(160 + i * 55, 1280 - 25);

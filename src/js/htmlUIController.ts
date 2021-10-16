@@ -36,7 +36,7 @@ export class htmlUIController {
         for (let i = 0; i < Object.keys(GUYS_CONFIG).length; i++) {
             //@ts-ignore
             const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];
-            total += SESSION_CONFIG.results[guy.key];
+            total += SESSION_CONFIG.results[guy.key] ? SESSION_CONFIG.results[guy.key] : 0;
         }
 
         return total;
@@ -54,7 +54,7 @@ export class htmlUIController {
             const needToOpen = i * (500 + 100 * (i - 1)) - total;
 
             const tempalate = `
-                <img class=${active ? "gray" : "s"} src=${this.assetsAddress + guy.head.left + ".png"} alt="tipok" style="width:100%">
+                <img class=${active ? "gray" : "s"} src=${this.assetsAddress + guy.key + "_left.png"} alt="tipok" style="width:100%">
                 <div class="container">
                     <p class="cardText">${guy.name}</p>
                     <p class="cardText">${needToOpen > 0 ? `до відкриття ${needToOpen} очків` : ""}</p>

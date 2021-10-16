@@ -1,10 +1,7 @@
-import {DrinkTextureKeys, GuysTextureKeys, GuysTypes} from "./Models";
+import {DrinkTextureKeys, GuysTypes} from "./Models";
 
 export const CONFIG = {
     assetsAddress: "",
-    shipSpeed: 3,
-    inertia: 0.98,
-    asteroidsCount: 5,
     reel: [
         "main",
         "main",
@@ -43,10 +40,6 @@ export const GUYS_CONFIG = {
     [GuysTypes.shepa]: {
         name: "Шепа",
         key: GuysTypes.shepa,
-        head: {
-            right: GuysTextureKeys.shepa_right,
-            left: GuysTextureKeys.shepa_left,
-        },
         drinks: {
             main: DrinkTextureKeys.vakcina,
             bonus: DrinkTextureKeys.applehoney,
@@ -56,14 +49,43 @@ export const GUYS_CONFIG = {
     [GuysTypes.shved]: {
         name: "Швєд",
         key: GuysTypes.shved,
-        head: {
-            right: GuysTextureKeys.shved_right,
-            left: GuysTextureKeys.shved_left,
-        },
         drinks: {
             main: DrinkTextureKeys.vakcina,
             bonus: DrinkTextureKeys.applehoney,
             lose: DrinkTextureKeys.medoff
         }
-    }
+    },
+    "lalala": {
+        name: "Шепа",
+        key: "lalala",
+        drinks: {
+            main: DrinkTextureKeys.vakcina,
+            bonus: DrinkTextureKeys.applehoney,
+            lose: DrinkTextureKeys.medoff
+        }
+    },
+    "lalala2": {
+        name: "Шепа",
+        key: "lalala2",
+        drinks: {
+            main: DrinkTextureKeys.vakcina,
+            bonus: DrinkTextureKeys.applehoney,
+            lose: DrinkTextureKeys.medoff
+        }
+    },
+    "lalala3": {
+        name: "Шепа",
+        key: "lalala3",
+        drinks: {
+            main: DrinkTextureKeys.vakcina,
+            bonus: DrinkTextureKeys.applehoney,
+            lose: DrinkTextureKeys.medoff
+        }
+    },
 }
+
+export const LOAD_THINGS_CONFIG = [
+    "vakcina",
+    "applehoney",
+    "medoff"
+]

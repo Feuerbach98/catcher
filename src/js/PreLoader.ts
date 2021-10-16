@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import { EVENTS } from "./Events";
 import { SESSION_CONFIG } from "./SessionConfig";
-import {CONFIG, GUYS_CONFIG} from "./Config";
+import {CONFIG, GUYS_CONFIG, LOAD_THINGS_CONFIG} from "./Config";
 
 
 export class Loader {
@@ -35,19 +35,14 @@ export class Loader {
                 "guy_right",
                 `${CONFIG.assetsAddress}guy_right.png`
             )
-        // drinks
-            .add(
-                "vakcina",
-                `${CONFIG.assetsAddress}drinks/vakcina.png`
+
+        for (let i = 0; i < LOAD_THINGS_CONFIG.length; i++) {
+            result.add(
+                LOAD_THINGS_CONFIG[i],
+                `${CONFIG.assetsAddress}drinks/${LOAD_THINGS_CONFIG[i]}.png`
             )
-            .add(
-                "applehoney",
-                `${CONFIG.assetsAddress}drinks/applehoney.png`
-            )
-            .add(
-                "medoff",
-                `${CONFIG.assetsAddress}drinks/medoff.png`
-            )
+        }
+
         for (let i = 0; i < Object.keys(GUYS_CONFIG).length; i++) {
             //@ts-ignore
             const guy = GUYS_CONFIG[Object.keys(GUYS_CONFIG)[i]];

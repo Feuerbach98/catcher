@@ -45,7 +45,7 @@ export class Guy {
     }
 
     addHead = () => {
-        this.head = new PIXI.Sprite(getTexture(this.guyConfig.head.right)) // right
+        this.head = new PIXI.Sprite(getTexture(this.guyConfig.key + "_right")) // right
         this.head.x = this.app.renderer.width / PIXI.settings.RESOLUTION / 2;
         this.head.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 400 * this.sprite!.scale.x;
         this.head.anchor.set(0.5);
@@ -66,7 +66,7 @@ export class Guy {
             this.sprite!.texture = this.leftTexture!;
             this.sprite!.anchor.set(0.75, 1);
 
-            this.head!.texture = getTexture(this.guyConfig.head.left);
+            this.head!.texture = getTexture(this.guyConfig.key + "_left");
 
             return
         }
@@ -76,7 +76,7 @@ export class Guy {
             this.sprite!.texture = this.rightTexture!;
             this.sprite!.anchor.set(0.25, 1);
 
-            this.head!.texture = getTexture(this.guyConfig.head.right);
+            this.head!.texture = getTexture(this.guyConfig.key + "_right");
 
             return;
         }
