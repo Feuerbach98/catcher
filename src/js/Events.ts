@@ -7,6 +7,7 @@ export const EVENTS = {
     playClicked: "playClicked",
     startGame: "startGame",
     stopThings: "stopThings",
+    endGame: "endGame"
 }
 
 Object.keys(EVENTS).forEach(key => {

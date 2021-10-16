@@ -63,6 +63,11 @@ export class App {
             this.onGameOver
         );
 
+        document.addEventListener(
+            EVENTS.endGame,
+            this.onGameOver
+        )
+
         window.addEventListener(
             "resize",
             this.onResize

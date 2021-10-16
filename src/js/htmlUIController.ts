@@ -22,6 +22,11 @@ export class htmlUIController {
             this.endGame?.classList.toggle("hidden");
         })
 
+        document.addEventListener(EVENTS.endGame, () => {
+            this.canvas?.classList.toggle("hidden");
+            this.menu?.classList.toggle("hidden");
+        })
+
         this.addGuys();
 
         this.endGame!.onclick = () => {

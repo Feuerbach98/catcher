@@ -50,36 +50,27 @@ export const GUYS_CONFIG = {
         name: "Швєд",
         key: GuysTypes.shved,
         drinks: {
-            main: DrinkTextureKeys.vakcina,
-            bonus: DrinkTextureKeys.applehoney,
-            lose: DrinkTextureKeys.medoff
+            main: DrinkTextureKeys.samogon,
+            bonus: DrinkTextureKeys.pepper,
+            lose: DrinkTextureKeys.porshe
         }
     },
-    "lalala": {
-        name: "Шепа",
-        key: "lalala",
+    [GuysTypes.semen]: {
+        name: "Семен",
+        key: GuysTypes.semen,
         drinks: {
-            main: DrinkTextureKeys.vakcina,
-            bonus: DrinkTextureKeys.applehoney,
-            lose: DrinkTextureKeys.medoff
+            main: DrinkTextureKeys.jack,
+            bonus: DrinkTextureKeys.doroga,
+            lose: DrinkTextureKeys.vakcina
         }
     },
-    "lalala2": {
-        name: "Шепа",
-        key: "lalala2",
+    [GuysTypes.roma]: {
+        name: "Роман",
+        key: GuysTypes.roma,
         drinks: {
-            main: DrinkTextureKeys.vakcina,
-            bonus: DrinkTextureKeys.applehoney,
-            lose: DrinkTextureKeys.medoff
-        }
-    },
-    "lalala3": {
-        name: "Шепа",
-        key: "lalala3",
-        drinks: {
-            main: DrinkTextureKeys.vakcina,
-            bonus: DrinkTextureKeys.applehoney,
-            lose: DrinkTextureKeys.medoff
+            main: DrinkTextureKeys.jack,
+            bonus: DrinkTextureKeys.doroga,
+            lose: DrinkTextureKeys.vakcina
         }
     },
 }
@@ -87,5 +78,10 @@ export const GUYS_CONFIG = {
 export const LOAD_THINGS_CONFIG = [
     "vakcina",
     "applehoney",
-    "medoff"
+    "medoff",
+    "doroga",
+    "jack",
+    "pepper",
+    "porshe",
+    "samogon"
 ]

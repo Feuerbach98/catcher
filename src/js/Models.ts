@@ -1,12 +1,19 @@
 export enum GuysTypes {
     shepa = "shepa",
     shved = "shved",
+    semen = "semen",
+    roma = "roma",
 }
 
 export enum DrinkTextureKeys {
     vakcina = "vakcina",
     medoff = "medoff",
-    applehoney = "applehoney"
+    applehoney = "applehoney",
+    doroga = "doroga",
+    jack = "jack",
+    pepper = "pepper",
+    porshe = "porshe",
+    samogon = "samogon"
 }
 
 export enum ThingTypes {

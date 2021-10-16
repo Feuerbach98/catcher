@@ -82,11 +82,24 @@ export class InfoPanel {
         text2.position.set(15, 25);
         this.bgContainer.addChild(text2);
 
+        const text3 = new PIXI.Text("МЕНЮ", this.textStyle)
+        text3.anchor.set(1, 0.5);
+        text3.position.set(720 - 15, 25);
+        text3.interactive = true;
+        this.bgContainer.addChild(text3);
+
+        text3.on("pointerdown", () => {
+            document.dispatchEvent(new Event(EVENTS.stopThings));
+            document.dispatchEvent(new Event(EVENTS.endGame));
+            LogicState.gameOver = true;
+        })
+
         this.score = new PIXI.Text("0", this.textStyle)
         this.score.anchor.set(0, 0.5);
         this.score.position.set(text2.position.x + text2.width + 10, 25);
         this.bgContainer.addChild(this.score);
 
+        //@ts-ignore
         const guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         for (let i = 0; i < LogicState.hurtsCount; i++) {
