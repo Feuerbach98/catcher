@@ -13,6 +13,11 @@ export class htmlUIController {
 
     constructor() {
         document.addEventListener(EVENTS.playClicked, () => {
+            while (this.cardList?.firstChild) {
+                this.cardList?.firstChild.remove();
+            }
+
+            this.addGuys();
             this.menu?.classList.toggle("hidden");
             this.chooseMenu?.classList.toggle("hidden");
         })
@@ -26,8 +31,6 @@ export class htmlUIController {
             this.canvas?.classList.toggle("hidden");
             this.menu?.classList.toggle("hidden");
         })
-
-        this.addGuys();
 
         this.endGame!.onclick = () => {
             this.endGame?.classList.toggle("hidden");
