@@ -41,7 +41,10 @@ export class Thing {
 
         this.chooseTypeThing()
 
-        this.sprite = new PIXI.Sprite(getTexture(this.guyConfig.drinks[this.type!]));
+        const possibleThingsArray = this.guyConfig.drinks[this.type!];
+        const key = Math.floor(Math.random() * possibleThingsArray.length)
+
+        this.sprite = new PIXI.Sprite(getTexture(possibleThingsArray[key]));
         this.container.addChild(this.sprite);
 
         this.sprite.scale.set(this.width / Math.max(this.sprite.width, this.sprite.height))

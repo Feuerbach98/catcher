@@ -41,36 +41,36 @@ export const GUYS_CONFIG = {
         name: "Шепа",
         key: GuysTypes.shepa,
         drinks: {
-            main: DrinkTextureKeys.vakcina,
-            bonus: DrinkTextureKeys.applehoney,
-            lose: DrinkTextureKeys.medoff
+            main: [DrinkTextureKeys.vakcina],
+            bonus: [DrinkTextureKeys.applehoney],
+            lose: [DrinkTextureKeys.medoff]
         }
     },
     [GuysTypes.shved]: {
         name: "Швєд",
         key: GuysTypes.shved,
         drinks: {
-            main: DrinkTextureKeys.samogon,
-            bonus: DrinkTextureKeys.pepper,
-            lose: DrinkTextureKeys.porshe
+            main: [DrinkTextureKeys.samogon],
+            bonus: [DrinkTextureKeys.pepper],
+            lose: [DrinkTextureKeys.porshe]
         }
     },
     [GuysTypes.semen]: {
         name: "Семен",
         key: GuysTypes.semen,
         drinks: {
-            main: DrinkTextureKeys.jack,
-            bonus: DrinkTextureKeys.doroga,
-            lose: DrinkTextureKeys.vakcina
+            main: [DrinkTextureKeys.jack],
+            bonus: [DrinkTextureKeys.doroga],
+            lose: [DrinkTextureKeys.vakcina]
         }
     },
     [GuysTypes.roma]: {
         name: "Роман",
         key: GuysTypes.roma,
         drinks: {
-            main: DrinkTextureKeys.jack,
-            bonus: DrinkTextureKeys.doroga,
-            lose: DrinkTextureKeys.vakcina
+            main: [DrinkTextureKeys.jack],
+            bonus: [DrinkTextureKeys.doroga],
+            lose: [DrinkTextureKeys.vakcina]
         }
     },
 }

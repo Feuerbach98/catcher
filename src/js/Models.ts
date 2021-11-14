@@ -31,8 +31,8 @@ export interface GuyConfig {
     name: string,
     key: string,
     drinks: {
-        main: string,
-        bonus: string,
-        lose: string,
+        main: string[],
+        bonus: string[],
+        lose: string[],
     }
 }
