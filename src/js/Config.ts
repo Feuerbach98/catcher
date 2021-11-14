@@ -68,9 +68,9 @@ export const GUYS_CONFIG = {
         name: "Роман",
         key: GuysTypes.roma,
         drinks: {
-            main: [DrinkTextureKeys.jack],
-            bonus: [DrinkTextureKeys.doroga],
-            lose: [DrinkTextureKeys.vakcina]
+            main: [DrinkTextureKeys.jack, DrinkTextureKeys.samogon, DrinkTextureKeys.vakcina, DrinkTextureKeys.medoff],
+            bonus: [DrinkTextureKeys.doroga, DrinkTextureKeys.applehoney],
+            lose: [DrinkTextureKeys.porshe]
         }
     },
 }
