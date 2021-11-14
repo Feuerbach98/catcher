@@ -1,0 +1,138 @@
+<!doctype html><html><head><meta charset="UTF-8"><title>pixi-webpack-demo</title><meta name="apple-mobile-web-app-capable" content="yes"><style>@font-face {
+            font-family: 'Maler';
+            src: url('./assets/Maler.ttf')
+        }
+
+        html {
+            font-family: 'Maler';
+            background: linear-gradient(45deg, #292929 25%, transparent 25%, transparent 75%, #292929 75%), linear-gradient(45deg, #292929 25%, transparent 25%, transparent 75%, #292929 75%) 0.1875em 0.1875em, radial-gradient(at 50% 0, #484847, #090909);
+            background-size: 0.375em 0.375em, 0.375em 0.375em, 100% 100%;
+            background-attachment: fixed;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            /*overflow: hidden;*/
+        }
+
+        canvas {
+            /*background: #fff;*/
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            position: absolute;
+        }
+        .menu {
+            font-size: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            list-style: none;
+            border-radius: 10px;
+            min-width: 300px;
+            max-width: 90%;
+            margin: 10px auto;
+            height: 90%;
+        }
+        .menu__item {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 10px 0;
+            font: inherit;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: none;
+        }
+        .menu__link {
+            padding: 10px;
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            border-radius: 10px;
+        }
+        .menu__link:hover {
+            cursor: pointer;
+            box-shadow: 0 0 5px 0 white;
+        }
+        .menu__link:active {
+            box-shadow: inset 0 0 5px 0 white;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .choose {
+        }
+        .cardList {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 3rem;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 40%;
+            background: rgba(67, 63, 62, 0.8);
+            color: white;
+            font-size: 40px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+
+        .h1 {
+            top: 0;
+            left: 0;
+            position: sticky;
+            position: -webkit-sticky;
+            font-size: 100px;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 50px 0;
+            background: rgba(48, 48, 48, 0.8);
+            font-family: 'Maler';
+        }
+
+        #endGame {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        .endGame {
+            position: absolute;
+            top: 50%;
+            font-size: 100px;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 50px 0;
+        }
+        .cardText {
+            margin: 15px 0;
+            text-align: center;
+        }
+        .gray {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }</style><script defer="defer" src="game.min.d3f005b8.js"></script></head><body><ul id="menu" class="menu"><li class="menu__item"><a class="menu__link" onclick="{play()}">Грати</a></li></ul><div id="choose" class="choose hidden"><h1 class="h1">Вибери тіпка:</h1><div id="cardList" class="cardList"></div></div><div id="endGame" class="hidden"><h1 class="endGame">Ти програв!<br><span style="font-size: 50px">клік для повернення у меню</span></h1></div><canvas id="scene" class="hidden"></canvas></body><script>const play = () => {document.dispatchEvent(new Event("playClicked"))}</script></html>
