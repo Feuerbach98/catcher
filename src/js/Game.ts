@@ -35,6 +35,7 @@ export class Game {
 
     init = () => {
         this.createCycle();
+        this.guy.init()
     }
 
     createCycle = () => {

@@ -53,6 +53,10 @@ export class InfoPanel {
     }
 
     init = () => {
+        while (this.sprites.length) {
+            this.fgContainer.removeChild(this.sprites[this.sprites.length - 1]);
+            this.sprites.length = this.sprites.length - 1;
+        }
         this.start();
     }
 

@@ -14,22 +14,23 @@ export class Guy {
     head?: PIXI.Sprite;
     width: number;
     height: number;
-    guyConfig: GuyConfig;
+    guyConfig?: GuyConfig;
 
     constructor(app: PIXI.Application) {
         this.app = app;
         this.container = new PIXI.Container();
-        //@ts-ignore
-        this.guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
 
         this.height = 250;
         this.width = 250;
 
-        this.init();
         this.initEvents();
     }
 
     init = () => {
+        //@ts-ignore
+        this.guyConfig = GUYS_CONFIG[LogicState.currentGuy] as GuyConfig;
+        this.container.removeChildren(0, this.container.children.length);
+
         this.rotation = "right";
 
         this.rightTexture = getTexture(MainGuyTextureKeys.guy_right);
@@ -46,7 +47,7 @@ export class Guy {
     }
 
     addHead = () => {
-        this.head = new PIXI.Sprite(getTexture(this.guyConfig.key + "_right")) // right
+        this.head = new PIXI.Sprite(getTexture(this.guyConfig?.key + "_right")) // right
         this.head.x = this.app.renderer.width / PIXI.settings.RESOLUTION / 2;
         this.head.y = this.app.renderer.height /  PIXI.settings.RESOLUTION - 400 * this.sprite!.scale.x;
         this.head.anchor.set(0.5);
@@ -67,7 +68,7 @@ export class Guy {
             this.sprite!.texture = this.leftTexture!;
             this.sprite!.anchor.set(0.75, 1);
 
-            this.head!.texture = getTexture(this.guyConfig.key + "_left");
+            this.head!.texture = getTexture(this.guyConfig?.key + "_left");
 
             return
         }
@@ -77,7 +78,7 @@ export class Guy {
             this.sprite!.texture = this.rightTexture!;
             this.sprite!.anchor.set(0.25, 1);
 
-            this.head!.texture = getTexture(this.guyConfig.key + "_right");
+            this.head!.texture = getTexture(this.guyConfig?.key + "_right");
 
             return;
         }
