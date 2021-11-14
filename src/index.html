@@ -53,7 +53,6 @@
         .menu__item {
             display: block;
             width: 100%;
-            max-width: 400px;
             margin: 10px 0;
             font: inherit;
             background-color: rgba(0, 0, 0, 0.5);
@@ -144,17 +143,42 @@
             -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
             filter: grayscale(100%);
         }
+
+        #menu {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #version {
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-<ul id="menu" class="menu">
-    <li class="menu__item">
-        <a class="menu__link" onclick="{play()}">
-            Грати
-        </a>
-    </li>
-</ul>
+<div id="menu">
+    <ul class="menu">
+        <li class="menu__item">
+            <a class="menu__link" onclick="{play()}">
+                Грати
+            </a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" onclick="{}">
+                Результати
+            </a>
+        </li>
+        <li class="menu__item">
+            <a class="menu__link" onclick="{}">
+                Налаштування
+            </a>
+        </li>
+    </ul>
+    <span id="version">версія 1.0.0 бета</span>
+</div>
 <div id="choose" class="choose hidden">
     <h1 class="h1">Вибери тіпка:</h1>
     <div id="cardList" class="cardList">
