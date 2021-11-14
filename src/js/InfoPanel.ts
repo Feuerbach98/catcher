@@ -31,8 +31,6 @@ export class InfoPanel {
             fontSize: 45,
         })
 
-        this.start();
-
         window.addEventListener(
             "resize",
             this.onResize
@@ -52,6 +50,10 @@ export class InfoPanel {
             EVENTS.increaseHealth,
             this.increaseHealth
         )
+    }
+
+    init = () => {
+        this.start();
     }
 
     start = () => {
@@ -162,7 +164,7 @@ export class InfoPanel {
             const sprite = new PIXI.Sprite(getTexture(guyConfig.key + "_right"))
             sprite.scale.set(this.size.width / Math.max(sprite.width, sprite.height))
             sprite.anchor.set(0, 0.5);
-            sprite.position.set(160 + i * 55, 1280 - 25);
+            sprite.position.set(160 + i * 50, 1280 - 25);
             this.fgContainer.addChild(sprite);
             this.sprites.push(sprite);
         }

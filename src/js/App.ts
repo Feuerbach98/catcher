@@ -44,12 +44,21 @@ export class App {
     onGameLoaded = () => {
         resetLogicState();
 
-        this.game = new Game(this.app);
-        this.infoPanel = new InfoPanel(this.app);
+        if (!this.game) {
+            this.game = new Game(this.app);
+        }
+
+        if (!this.infoPanel) {
+            this.infoPanel = new InfoPanel(this.app);
+        }
+
         this.app.stage.addChild(this.game.thingsContainer);
-        this.app.stage.addChild(this.infoPanel.bgContainer);
-        this.app.stage.addChild(this.infoPanel.fgContainer);
+        this.app.stage.addChild(this.infoPanel!.bgContainer);
+        this.app.stage.addChild(this.infoPanel!.fgContainer);
         this.app.stage.addChild(this.game.container);
+
+        this.game.init();
+        this.infoPanel.init();
     };
 
     setupEvents = () => {

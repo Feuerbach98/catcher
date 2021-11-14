@@ -31,7 +31,9 @@ export class Game {
         this.container.addChild(this.guy.container);
 
         document.addEventListener(EVENTS.stopThings, this.destroyAll)
+    }
 
+    init = () => {
         this.createCycle();
     }
 
@@ -69,69 +71,68 @@ export class Game {
         const drink = new Thing(this.app);
         this.things.push(drink);
         this.thingsContainer.addChild(drink.container);
-        this.moveDrinks();
+        this.moveDrinks(drink);
     }
 
-    moveDrinks = () => {
-        this.things.forEach((thing) => {
-            if (thing.moving) {
-                return
-            }
+    moveDrinks = (thing: any) => {
 
-            thing.moving = true;
+        if (thing.moving) {
+            return
+        }
 
-            anime({
-                targets: [thing.sprite!.position],
-                duration: randomInteger(this.speed, this.speed + 500),
-                y: thing.sprite!.position.y + this.app.renderer.height / PIXI.settings.RESOLUTION,
-                easing: "linear",
-                update: () => {
-                    if (thing.sprite!.position.y > this.app.renderer.height / PIXI.settings.RESOLUTION - 445 &&
-                        thing.sprite!.position.y < this.app.renderer.height / PIXI.settings.RESOLUTION - 395 &&
-                        this.guy.rotation === thing.side && !thing.destroyed
-                    ) {
-                        thing.destroyed = true;
+        thing.moving = true;
 
-                        anime({
-                            targets: [thing.sprite],
-                            duration: 100,
-                            complete: () => {
-                                this.thingsContainer.removeChild(thing.container)
-                                if (thing.type === ThingTypes.main) {
+        anime({
+            targets: [thing.sprite!.position],
+            duration: randomInteger(this.speed, this.speed + 500),
+            y: thing.sprite!.position.y + this.app.renderer.height / PIXI.settings.RESOLUTION,
+            easing: "linear",
+            update: () => {
+                if (thing.sprite!.position.y > this.app.renderer.height / PIXI.settings.RESOLUTION - 445 &&
+                    thing.sprite!.position.y < this.app.renderer.height / PIXI.settings.RESOLUTION - 395 &&
+                    this.guy.rotation === thing.side && !thing.destroyed
+                ) {
+                    thing.destroyed = true;
+
+                    anime({
+                        targets: [thing.sprite],
+                        duration: 100,
+                        complete: () => {
+                            this.thingsContainer.removeChild(thing.container)
+                            if (thing.type === ThingTypes.main) {
+                                document.dispatchEvent(new Event(EVENTS.increaseScore));
+                            }
+                            if (thing.type === ThingTypes.lose) {
+                                document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                                document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                                document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                            }
+                            if (thing.type === ThingTypes.bonus) {
+                                if (LogicState.hurtsCount < 5) {
+                                    document.dispatchEvent(new Event(EVENTS.increaseHealth));
+                                } else {
+                                    document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                    document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                    document.dispatchEvent(new Event(EVENTS.increaseScore));
+                                    document.dispatchEvent(new Event(EVENTS.increaseScore));
                                     document.dispatchEvent(new Event(EVENTS.increaseScore));
                                 }
-                                if (thing.type === ThingTypes.lose) {
-                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
-                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
-                                    document.dispatchEvent(new Event(EVENTS.decreaseHealth));
-                                }
-                                if (thing.type === ThingTypes.bonus) {
-                                    if (LogicState.hurtsCount < 5) {
-                                        document.dispatchEvent(new Event(EVENTS.increaseHealth));
-                                    } else {
-                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
-                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
-                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
-                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
-                                        document.dispatchEvent(new Event(EVENTS.increaseScore));
-                                    }
-                                }
-                            },
-                            alpha: 0
-                        })
-                    }
-                },
-                complete: () => {
-                    if (!thing.destroyed) {
-                        //lost
-                        thing.destroyed = true;
-                        if (thing.type === ThingTypes.main) {
-                            document.dispatchEvent(new Event(EVENTS.decreaseHealth));
-                        }
-                        this.thingsContainer.removeChild(thing.container)
-                    }
+                            }
+                        },
+                        alpha: 0
+                    })
                 }
-            })
+            },
+            complete: () => {
+                if (!thing.destroyed) {
+                    //lost
+                    thing.destroyed = true;
+                    if (thing.type === ThingTypes.main) {
+                        document.dispatchEvent(new Event(EVENTS.decreaseHealth));
+                    }
+                    this.thingsContainer.removeChild(thing.container)
+                }
+            }
         })
     }
 }
